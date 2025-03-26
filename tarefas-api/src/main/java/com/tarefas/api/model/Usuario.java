@@ -69,6 +69,8 @@ public class Usuario {
         dto.setNome(nome);
         dto.setEmail(email);
         dto.setCpf(cpf);
+        dto.setDataNascimento(dataNascimento);
+        dto.setSenha(senha);
 
         LocalDate dataAtual = LocalDate.now();
         Period periodo = Period.between(dataNascimento, dataAtual);

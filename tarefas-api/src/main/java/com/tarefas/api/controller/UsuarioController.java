@@ -40,7 +40,7 @@ public class UsuarioController {
 
     @GetMapping
     public ResponseEntity<Page<UsuarioDTO>> listarUsuarios(
-        @PageableDefault(size = 10, page = 1, sort = "nome", direction = Direction.DESC) Pageable paginacao) {
+        @PageableDefault(size = 20, page = 0, sort = "nome", direction = Direction.ASC) Pageable paginacao) {
         return ResponseEntity.status(HttpStatus.OK).body(usuarioService.listarUsuarios(paginacao));
     }
 
