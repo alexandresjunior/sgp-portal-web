@@ -1,7 +1,6 @@
 package com.tarefas.api.model;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 import com.tarefas.api.constants.StatusTarefa;
@@ -51,10 +50,7 @@ public class Projeto {
         dto.setId(id);
         dto.setNome(nome);
         dto.setDescricao(descricao);
-
-        if (Objects.nonNull(responsavel)) {
-            dto.setNomeResponsavel(responsavel.getNome());
-        }
+        dto.setResponsavel(responsavel);
 
         List<Tarefa> pendentes = tarefas.stream()
                 .filter(tarefa -> StatusTarefa.PENDENTE.equals(tarefa.getStatus()))

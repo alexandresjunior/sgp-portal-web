@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -30,10 +32,10 @@ public class ProjetoController {
     public ResponseEntity<Projeto> cadastrarProjeto(@RequestBody Projeto projeto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(projetoService.salvarProjeto(projeto));
     }
-    
+
     @GetMapping
-    public ResponseEntity<List<Projeto>> listarProjetos() {
-        return ResponseEntity.ok().body(projetoService.listarProjetos());
+    public ResponseEntity<Page<Projeto>> listarProjetos(Pageable paginacao) {
+        return ResponseEntity.ok().body(projetoService.listarProjetos(paginacao));
     }
 
     @GetMapping("/{id}")
@@ -74,5 +76,5 @@ public class ProjetoController {
 
         return ResponseEntity.ok().body(projetoService.atualizarProjeto(id, dadosProjetos));
     }
-    
+
 }

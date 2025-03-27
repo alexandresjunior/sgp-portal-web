@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.tarefas.api.dto.ProjetoDTO;
@@ -12,7 +14,7 @@ import com.tarefas.api.repository.ProjetoRepository;
 
 @Service
 public class ProjetoService {
-    
+
     @Autowired
     private ProjetoRepository projetoRepository;
 
@@ -20,8 +22,8 @@ public class ProjetoService {
         return projetoRepository.save(projeto);
     }
 
-    public List<Projeto> listarProjetos() {
-        return projetoRepository.findAll();
+    public Page<Projeto> listarProjetos(Pageable paginacao) {
+        return projetoRepository.findAll(paginacao);
     }
 
     public ProjetoDTO buscarProjetoPeloId(Long id) {

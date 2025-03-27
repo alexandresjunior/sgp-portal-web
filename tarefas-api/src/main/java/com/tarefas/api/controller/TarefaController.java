@@ -1,9 +1,10 @@
 package com.tarefas.api.controller;
 
-import java.util.List;
 import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -32,8 +33,8 @@ public class TarefaController {
     }
 
     @GetMapping
-    public ResponseEntity<List<TarefaDTO>> listarTarefas() {
-        return ResponseEntity.status(HttpStatus.OK).body(tarefaService.listarTarefas());
+    public ResponseEntity<Page<Tarefa>> listarTarefas(Pageable paginacao) {
+        return ResponseEntity.status(HttpStatus.OK).body(tarefaService.listarTarefas(paginacao));
     }
 
     @GetMapping("/{id}")
