@@ -51,6 +51,7 @@ public class Projeto {
         dto.setNome(nome);
         dto.setDescricao(descricao);
         dto.setResponsavel(responsavel);
+        dto.setTarefas(tarefas);
 
         List<Tarefa> pendentes = tarefas.stream()
                 .filter(tarefa -> StatusTarefa.PENDENTE.equals(tarefa.getStatus()))

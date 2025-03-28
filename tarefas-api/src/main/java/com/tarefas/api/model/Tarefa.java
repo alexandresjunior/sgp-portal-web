@@ -16,6 +16,8 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -53,6 +55,10 @@ public class Tarefa {
     @Enumerated(EnumType.STRING)
     private StatusTarefa status;
 
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private Projeto projeto;
+
     public TarefaDTO toDTO() {
         TarefaDTO dto = new TarefaDTO();
 
@@ -60,6 +66,8 @@ public class Tarefa {
         dto.setTitulo(titulo);
         dto.setDescricao(descricao);
         dto.setDataCriacao(dataCriacao);
+        dto.setDataConclusao(dataConclusao);
+        dto.setProjeto(projeto);
 
         Period periodo = null;
 
