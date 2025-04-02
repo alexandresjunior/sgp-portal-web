@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import com.tarefas.api.constants.Prioridade;
 import com.tarefas.api.constants.StatusTarefa;
 import com.tarefas.api.model.Projeto;
+import com.tarefas.api.model.Usuario;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,6 +20,7 @@ public class TarefaDTO {
     private String titulo;
     private String descricao;
     private Projeto projeto;
+    private Usuario usuario;
     private LocalDate dataCriacao;
     private LocalDate dataConclusao;
     private int qtdeDiasTrabalhados;
